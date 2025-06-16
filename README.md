@@ -1,12 +1,12 @@
-# USB2000/4000 Spectrometer Tools
+# USB2000/4000 Spectrometer Python-based Acquisition Tools
 
 ## Repository Description
 
 This repository contains a collection of Python scripts for acquiring and
 visualising spectra with Ocean Optics USB2000/USB4000 series spectrometers.
-All programs rely on the [`seabreeze`](https://github.com/ap--/python-seabreeze)
+All scripts rely on the [`seabreeze`](https://github.com/ap--/python-seabreeze)
 package together with standard scientific Python libraries.  The
-programs are stored directly in the repository root.  Example output folders generated
+scripts are stored directly in the repository root.  Example output folders generated
 by the live acquisition programs can be found in `examples/data/` and are not
 required for running the code.
 
