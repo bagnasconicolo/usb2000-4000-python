@@ -6,7 +6,7 @@ This repository contains a collection of Python scripts for acquiring and
 visualising spectra with Ocean Optics USB2000/USB4000 series spectrometers.
 All programs rely on the [`seabreeze`](https://github.com/ap--/python-seabreeze)
 package together with standard scientific Python libraries.  The example
-programs now live in the `examples/` folder.  Example output folders generated
+programs are stored directly in the repository root.  Example output folders generated
 by the live acquisition programs can be found in `examples/data/` and are not
 required for running the code.
 
@@ -26,7 +26,7 @@ required for running the code.
 
 ## Overview of Scripts
 
-### `examples/spec.py`
+### `spec.py`
 A minimal command‑line program that acquires a single averaged spectrum and
 saves it to `usb2000_spectrum.tsv`. Important parts are:
 
@@ -40,8 +40,10 @@ The saved file contains two columns named `wavelength_nm` and
 The variables `integ_ms`, `n_average`, `dark_correct` and `boxcar_px`
 at the beginning of the `main()` function can be edited to change the
 integration time, number of averaged frames, dark subtraction and smoothing.
+`boxcar_px` specifies the half-width of the boxcar smoothing window in
+pixels. A value of `n` averages over `2n + 1` neighbouring samples.
 
-### `examples/speclive.py`
+### `speclive.py`
 Graphical user interface that shows a live spectrum with a 1 s refresh rate.
 It uses `pyqtgraph` and runs a timer to periodically read the instrument.
 Highlights from the source include:
@@ -57,7 +59,7 @@ Highlights from the source include:
 
 Close events are handled so that the spectrometer is properly released.
 
-### `examples/speclive2.py`
+### `speclive2.py`
 A faster variant of the live viewer refreshing every 100 ms. The display can
 be paused or resumed by pressing the space bar. Key elements are:
 
@@ -70,7 +72,7 @@ be paused or resumed by pressing the space bar. Key elements are:
   `integ_ms`, `n_avg` and `boxcar_px` which set the integration time,
   averaging and smoothing.
 
-### `examples/speclive3.py`
+### `speclive3.py`
 Extends the live view by adding a “CCD strip” representation below the plot.
 Each pixel is coloured according to its wavelength. The script again refreshes
 at 100 ms and allows pausing with the space key.
@@ -85,7 +87,7 @@ at 100 ms and allows pausing with the space key.
   `REFRESH_MS`, `integ_ms` and the boxcar smoothing width can be tweaked at
   the start of the script.
 
-### `examples/speclive4.py`
+### `speclive4.py`
 Most feature‑rich interface combining the live plot and CCD strip with several
 keyboard shortcuts and export functions.
 
@@ -110,11 +112,11 @@ Run any of the scripts with Python after connecting a compatible
 spectrometer. For example:
 
 ```bash
-python examples/spec.py          # acquire and save a single averaged spectrum
-python examples/speclive.py      # basic 1 Hz live viewer
-python examples/speclive2.py     # fast 100 ms display with start/stop
-python examples/speclive3.py     # live view with coloured CCD strip
-python examples/speclive4.py     # advanced viewer with export options
+python spec.py          # acquire and save a single averaged spectrum
+python speclive.py      # basic 1 Hz live viewer
+python speclive2.py     # fast 100 ms display with start/stop
+python speclive3.py     # live view with coloured CCD strip
+python speclive4.py     # advanced viewer with export options
 ```
 
 Close the windows normally to ensure the device connection is closed.
